@@ -14,8 +14,9 @@ print "input Dcry Price\nDcry default price = ",DcryPrice
 #DcryPrice = (input ())/1.0
 
 adena = (input ("input adena "))/1.0
-Dcry = (input ("input number of Dcry" ))/1.0
-SpiritOre = (input ("input number of SpiritOre" ))/1.0
+startadena=adena
+Dcry = (input ("input number of Dcry " ))/1.0
+SpiritOre = (input ("input number of SpiritOre " ))/1.0
 
 if (Dcry >= 2) and (SpiritOre >=8):
     while (Dcry >= 2) and (SpiritOre >=8):
@@ -49,12 +50,45 @@ if (Dcry >= 2) and (SpiritOre <8):
         else:
             break
 
+while (adena > (Dgloves+8*19*SpiritOrePrice)):
+    adena=adena-(Dgloves+8*19*SpiritOrePrice)
+    NumDGloves=NumDGloves+1
+    NumSpiritOre=NumSpiritOre+8*19
+    Dcry=Dcry+38
+    SpiritOre=SpiritOre+8*19
+    while (Dcry >= 2) and (SpiritOre >= 8):
+        Dcry=Dcry-2
+        SpiritOre=SpiritOre-8
+        BSSD=BSSD+100
 
 
-print BSSD
-print "adena = ",adena
-print "NumSpiritOre = ",NumSpiritOre
-print "DGloves = ",NumDGloves
-print "Dcry = ",Dcry
-print "SpiritOre = ",SpiritOre
-input ("exit")
+while (adena > Dgloves):
+    Dcry=Dcry+38
+    adena=adena-Dgloves
+    NumDGloves=NumDGloves+1
+    while (adena >= SpiritOrePrice*8) and (Dcry >= 2):
+        adena=adena-SpiritOrePrice*8
+        NumSpiritOre=NumSpiritOre+8
+        Dcry=Dcry-2
+        BSSD=BSSD+100
+
+
+
+
+
+
+
+print "total Blesed Spiritshot D grade = ",BSSD
+print "free adena = ",adena
+print "SpiritOre need = ",NumSpiritOre
+print "DGloves need = ",NumDGloves
+print "- - - - - -- - - - - - - - - - - - - - - - - - - - - -"
+print "free Dcry = ",Dcry
+print "free SpiritOre = ",SpiritOre
+print "- - - - - -- - - - - - - - - - - - - - - - - - - - - -"
+price = input ("prise BSSD ")/1.0
+
+print "- - - - - -- - - - - - - - - - - - - - - - - - - - - -"
+print "total adena = ",BSSD*price+adena
+print "profit = ",BSSD*price-startadena+adena
+raw_input ("press any key")
